@@ -1,13 +1,38 @@
 <!-- Please remove this file from your project -->
+<script>
+const axios = require('axios');
+
+export default {
+  methods: {
+    searchFct() {
+      var config = {
+        method: 'get',
+        url: 'https://api.ndi.haysberg.io/',
+        headers: { }
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+    },
+  }
+}
+</script>
+
 <template>
-  <div class="pt-2 relative mx-auto text-gray-600">
+  <div class="pt-2 relative mx-auto text-gray-600 w-3/6">
     <input
-      class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+      class="border-2 border-gray-300 bg-white w-full h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
       type="search"
       name="search"
       placeholder="Search"
     />
-    <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+    <button id="submitSearch" type="submit" @click="searchFct();" class="absolute right-0 top-0 mt-5 mr-4">
       <svg
         class="text-gray-600 h-4 w-4 fill-current"
         xmlns="http://www.w3.org/2000/svg"
