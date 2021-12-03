@@ -1,6 +1,8 @@
 import json
 import re
 
+import requests
+
 with open("sauveteurs.json", "r") as sauveteurs_json:
 
     sauveteurs = json.loads(sauveteurs_json.read())
@@ -28,8 +30,3 @@ for sauveteur, data in sauveteurs.items():
             continue
 
         parsed_data[sauveteur][key] = re.sub(' {2,}',' ', value.strip())
-
-with open("parsed_sauveteurs.json", "w") as out_file:
-
-    out_file.write(json.dumps(parsed_data, indent=4, ensure_ascii=False))
-        
